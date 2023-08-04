@@ -26,7 +26,8 @@ function Copy-FilesToModuleDirectory {
     write-host "#####Path: $Path"
     write-host "######NewBasePath: $NewBasePath"
 
-    $OutputPath = Join-Path $NewBasePath $(Split-Path -Path $Path -Leaf)
+    #$OutputPath = Join-Path $NewBasePath $(Split-Path -Path $Path -Leaf)
+    $OutputPath = Join-Path + $(Split-Path -Path $Path -Leaf)
     Write-Host "#####OutputPath: $OutputPath"
     $OutputPath
 }
