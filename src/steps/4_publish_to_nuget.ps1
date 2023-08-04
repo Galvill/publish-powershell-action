@@ -19,7 +19,7 @@ try {
     write-host "Path: $env:RESOLVED_PATH"
     Get-Content $env:RESOLVED_PATH
     $PublishSplat = @{
-        Path = $env:RESOLVED_PATH
+        Path = Split-Path $env:RESOLVED_PATH
         Repository = "NuGet"
         ApiKey = $env:INPUT_TOKEN
       #  SkipDependenciesCheck = $true
@@ -32,8 +32,7 @@ try {
             }
         }
     }
-    #Publish-PSResource @PublishSplat
-    Publish-PSResource -Path $env:RESOLVED_PATH -Repository "NuGet" -ApiKey $env:INPUT_TOKEN -SkipDependenciesCheck 
+    Publish-PSResource @PublishSplat
 }
 finally {
     Unregister-PSResourceRepository -Name "NuGet"
