@@ -23,9 +23,10 @@ function Copy-FilesToModuleDirectory {
     New-Item -Path $NewBasePath -Type Directory | Out-Null
     Copy-Item -Path "$ManifestDir\*" -Destination $NewBasePath -Recurse
 
-    write-host "Path: $Path"
-    write-host "NewBasePath: $NewBasePath"
+    write-host "#####Path: $Path"
+    write-host "######NewBasePath: $NewBasePath"
 
     $OutputPath = Join-Path $NewBasePath $(Split-Path -Path $Path -Leaf)
+    Write-Host "#####OutputPath: $OutputPath"
     $OutputPath
 }
