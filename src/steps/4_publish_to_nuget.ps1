@@ -32,7 +32,8 @@ try {
             }
         }
     }
-    Publish-PSResource @PublishSplat
+    #Publish-PSResource @PublishSplat
+    Publish-PSResource -Path $env:RESOLVED_PATH -Repository "NuGet" -ApiKey $env:INPUT_TOKEN -SkipDependenciesCheck 
 }
 finally {
     Unregister-PSResourceRepository -Name "NuGet"
