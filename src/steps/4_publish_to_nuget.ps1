@@ -14,9 +14,6 @@ catch {
     Register-PSResourceRepository -Name "NuGet" -Uri $env:INPUT_NUGETURL -Trusted    
 }
 
-Write-Host "Registering NuGet repository..."
-Register-PSResourceRepository -Name "NuGet" -Uri $env:INPUT_NUGETURL -Trusted
-
 try {
     Write-Host "Publishing to NuGet repository...."
     $PublishSplat = @{
