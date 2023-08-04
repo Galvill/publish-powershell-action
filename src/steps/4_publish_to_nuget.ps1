@@ -4,6 +4,16 @@ if ($env:IMPORT_STRING) {
     Invoke-Expression -Command $env:IMPORT_STRING
 }
 
+try {
+    Write-Host "Registering NuGet repository..."
+    Register-PSResourceRepository -Name "NuGet" -Uri $env:INPUT_NUGETURL -Trusted
+}
+catch {
+    Write-Host "Registration failed, cleaning up and trying again..."
+    Unregister-PSResourceRepository -Name "NuGet"
+    Register-PSResourceRepository -Name "NuGet" -Uri $env:INPUT_NUGETURL -Trusted    
+}
+
 Write-Host "Registering NuGet repository..."
 Register-PSResourceRepository -Name "NuGet" -Uri $env:INPUT_NUGETURL -Trusted
 
