@@ -17,6 +17,7 @@ catch {
 try {
     Write-Host "Publishing to NuGet repository...."
     write-host "Path: $env:RESOLVED_PATH"
+    Get-Content $env:RESOLVED_PATH
     $PublishSplat = @{
         Path = $env:RESOLVED_PATH
         Repository = "NuGet"
