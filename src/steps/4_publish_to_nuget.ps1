@@ -27,6 +27,7 @@ try {
     if ($env:RESOLVED_PATH -like "*.psd1") {
         $ManifestData = Import-PowerShellDataFile $env:RESOLVED_PATH
         if ($ManifestData.RequiredModules) {
+            write-host "#####Manifest has required modules, skipping module manifest validation..."
             $PublishSplat += @{
                 SkipModuleManifestValidate = $true
             }
